@@ -1,3 +1,19 @@
+# ros bag to ros2 bag
+```bash
+rosbags-convert --src /home/yanzj/workspace/code/slam_ros2/src/data/2017-06-08-15-50-45_1.bag --dst /home/yanzj/workspace/code/slam_ros2/src/data/2017-06-08-15-
+50-45_1_ros2.bag
+```
+
+
+# run
+```bash
+ros2 launch lego_loam run.launch.py
+ros2 bag play /home/yanzj/workspace/code/slam_ros2/src/data_ros2/2017-06-08-15-49-45_0
+```
+
+
+
+
 # LeGO-LOAM-ROS2
 
 This code is a fork from [LeGO-LOAM-SR](https://github.com/eperdices/LeGO-LOAM-SR) to migrate [LeGO-LOAM](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM) algorithm to ROS2 humble.
