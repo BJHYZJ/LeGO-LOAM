@@ -188,13 +188,7 @@ void TransformFusion::laserOdometryHandler(
   tf2::Quaternion q;
   geometry_msgs::msg::Quaternion geoQuat;
   q.setRPY(transformMapped[2], -transformMapped[0], -transformMapped[1]);
-    // tf2::convert(q, geoQuat);
-//   geoQuat = tf2::toMsg<tf2::Quaternion,geometry_msgs::msg::Quaternion>(q);
-  geoQuat.x = q.x();
-  geoQuat.y = q.y();
-  geoQuat.z = q.z();
-  geoQuat.w = q.w();
-
+  geoQuat = tf2::toMsg(q);
 
   laserOdometry2.header.stamp = laserOdometry->header.stamp;
   laserOdometry2.pose.pose.orientation.x = -geoQuat.y;

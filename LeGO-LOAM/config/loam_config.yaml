@@ -2,7 +2,7 @@
 image_projection:
   ros__parameters:
     laser:
-      num_vertical_scans: 16
+      num_vertical_scans: 32
       num_horizontal_scans: 1800
       vertical_angle_bottom: -15.0          # degrees
       vertical_angle_top: 15.0              # degrees
@@ -31,7 +31,7 @@ map_optimization:
 feature_association:
   ros__parameters:
     laser:
-      num_vertical_scans: 16
+      num_vertical_scans: 32
       num_horizontal_scans: 1800
       scan_period: 0.1                      # seconds
 

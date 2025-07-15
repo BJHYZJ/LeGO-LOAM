@@ -16,6 +16,7 @@
 #include <pcl/filters/filter.h>
 #include <pcl/filters/voxel_grid.h>
 #include <pcl/common/common.h>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 #include <pcl/registration/icp.h>
 
 #include <tf2/utils.h>

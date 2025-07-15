@@ -43,7 +43,7 @@ ImageProjection::ImageProjection(const std::string &name, Channel<ProjectionOut>
     : Node(name),  _output_channel(output_channel)
 {
   _sub_laser_cloud = this->create_subscription<sensor_msgs::msg::PointCloud2>(
-      "/rslidar_points", 1, std::bind(&ImageProjection::cloudHandler, this, std::placeholders::_1));
+      "/lidar_points", 1, std::bind(&ImageProjection::cloudHandler, this, std::placeholders::_1));
 
   _pub_full_cloud = this->create_publisher<sensor_msgs::msg::PointCloud2>("/full_cloud_projected", 1);
   _pub_full_info_cloud = this->create_publisher<sensor_msgs::msg::PointCloud2>("/full_cloud_info", 1);
@@ -53,18 +53,18 @@ ImageProjection::ImageProjection(const std::string &name, Channel<ProjectionOut>
   _pub_segmented_cloud_info = this->create_publisher<cloud_msgs::msg::CloudInfo>("/segmented_cloud_info", 1);
   _pub_outlier_cloud = this->create_publisher<sensor_msgs::msg::PointCloud2>("/outlier_cloud", 1);
 
-  float vertical_angle_top;
-  // Declare parameters
-  this->declare_parameter(PARAM_VERTICAL_SCANS,_vertical_scans);
-  this->declare_parameter(PARAM_HORIZONTAL_SCANS,_horizontal_scans);
-  this->declare_parameter(PARAM_ANGLE_BOTTOM,_ang_bottom);
-  this->declare_parameter(PARAM_ANGLE_TOP,vertical_angle_top);
-  this->declare_parameter(PARAM_GROUND_INDEX,_ground_scan_index);
-  this->declare_parameter(PARAM_SENSOR_ANGLE,_sensor_mount_angle);
-  this->declare_parameter(PARAM_SEGMENT_THETA,_segment_theta);
-  this->declare_parameter(PARAM_SEGMENT_POINT,_segment_valid_point_num);
-  this->declare_parameter(PARAM_SEGMENT_LINE,_segment_valid_line_num);
+  // 声明参数并提供默认值（根据变量类型和激光雷达常见配置）
+  this->declare_parameter(PARAM_VERTICAL_SCANS, 16);          // 垂直扫描线数，例如16线激光雷达
+  this->declare_parameter(PARAM_HORIZONTAL_SCANS, 1800);      // 水平扫描点数，例如1800点/圈
+  this->declare_parameter(PARAM_ANGLE_BOTTOM, -15.0f);        // 底部角度，单位度
+  this->declare_parameter(PARAM_ANGLE_TOP, 15.0f);            // 顶部角度，单位度
+  this->declare_parameter(PARAM_GROUND_INDEX, 7);             // 地面检测起始线
+  this->declare_parameter(PARAM_SENSOR_ANGLE, 0.0f);          // 传感器安装角度，单位度
+  this->declare_parameter(PARAM_SEGMENT_THETA, 60.0f);        // 分割角度阈值，单位度
+  this->declare_parameter(PARAM_SEGMENT_POINT, 5);            // 有效点数量阈值
+  this->declare_parameter(PARAM_SEGMENT_LINE, 3);             // 有效线数量阈值
 
+  float vertical_angle_top;
 
   // Read parameters
   if (!this->get_parameter(PARAM_VERTICAL_SCANS, _vertical_scans)) {

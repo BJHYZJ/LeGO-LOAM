@@ -84,13 +84,13 @@ MapOptimization::MapOptimization(const std::string &name, Channel<AssociationOut
   aftMappedTrans.child_frame_id = "aft_mapped";
 
   // Declare parameters
-  this->declare_parameter(PARAM_ENABLE_LOOP,_loop_closure_enabled);
-  this->declare_parameter(PARAM_SEARCH_RADIUS,_surrounding_keyframe_search_radius);
-  this->declare_parameter(PARAM_SEARCH_NUM,_surrounding_keyframe_search_num);
-  this->declare_parameter(PARAM_HISTORY_SEARCH_RADIUS,_history_keyframe_search_radius);
-  this->declare_parameter(PARAM_HISTORY_SEARCH_NUM,_history_keyframe_search_num);
-  this->declare_parameter(PARAM_HISTORY_SCORE,_history_keyframe_fitness_score);
-  this->declare_parameter(PARAM_GLOBAL_SEARCH_RADIUS,_global_map_visualization_search_radius);
+  this->declare_parameter(PARAM_ENABLE_LOOP, true); // 假设是布尔类型，默认启用回环检测
+  this->declare_parameter(PARAM_SEARCH_RADIUS, 5.0f); // 假设是float类型
+  this->declare_parameter(PARAM_SEARCH_NUM, 20); // 假设是int类型
+  this->declare_parameter(PARAM_HISTORY_SEARCH_RADIUS, 10.0f); // 假设是float类型
+  this->declare_parameter(PARAM_HISTORY_SEARCH_NUM, 30); // 假设是int类型
+  this->declare_parameter(PARAM_HISTORY_SCORE, 0.3f); // 假设是float类型
+  this->declare_parameter(PARAM_GLOBAL_SEARCH_RADIUS, 50.0f); // 假设是float类型
 
   // Read parameters
   if (!this->get_parameter(PARAM_ENABLE_LOOP, _loop_closure_enabled)) {
@@ -500,12 +500,7 @@ void MapOptimization::publishTF() {
   tf2::Quaternion q;
   geometry_msgs::msg::Quaternion geoQuat;
   q.setRPY(transformAftMapped[2], -transformAftMapped[0], -transformAftMapped[1]);
-  // tf2::convert(q, geoQuat);
-  // geoQuat = tf2::toMsg<tf2::Quaternion,geometry_msgs::msg::Quaternion>(q);
-  geoQuat.x = q.x();
-  geoQuat.y = q.y();
-  geoQuat.z = q.z();
-  geoQuat.w = q.w();
+  geoQuat = tf2::toMsg(q);
 
   odomAftMapped.header.stamp = timeLaserOdometry;
   odomAftMapped.pose.pose.orientation.x = -geoQuat.y;

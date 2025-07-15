@@ -6,7 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /PointCloud21
+        - /Full PointCloud21
       Splitter Ratio: 0.5058823823928833
     Tree Height: 1799
   - Class: rviz_common/Selection
@@ -309,7 +309,7 @@ Visualization Manager:
       Max Intensity: 0
       Min Color: 0; 0; 0
       Min Intensity: 0
-      Name: PointCloud2
+      Name: Full PointCloud2
       Position Transformer: XYZ
       Selectable: true
       Size (Pixels): 3
@@ -371,7 +371,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/ThirdPersonFollower
-      Distance: 188.05581665039062
+      Distance: 234.82131958007812
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -386,10 +386,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.9203981161117554
+      Pitch: 1.0203980207443237
       Target Frame: base_link
       Value: ThirdPersonFollower (rviz_default_plugins)
-      Yaw: 0.40039610862731934
+      Yaw: 0.6803992986679077
     Saved: ~
 Window Geometry:
   Displays:

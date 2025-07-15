@@ -1,4 +1,5 @@
 # ros bag to ros2 bag
+
 ```bash
 rosbags-convert --src /home/yanzj/workspace/code/slam_ros2/src/data/2017-06-08-15-50-45_1.bag --dst /home/yanzj/workspace/code/slam_ros2/src/data/2017-06-08-15-
 50-45_1_ros2.bag
@@ -6,19 +7,18 @@ rosbags-convert --src /home/yanzj/workspace/code/slam_ros2/src/data/2017-06-08-1
 
 
 # run
+
 ```bash
 ros2 launch lego_loam run.launch.py
 ros2 bag play /home/yanzj/workspace/code/slam_ros2/src/data_ros2/2017-06-08-15-49-45_0
 ```
 
 
-
-
 # LeGO-LOAM-ROS2
 
-This code is a fork from [LeGO-LOAM-SR](https://github.com/eperdices/LeGO-LOAM-SR) to migrate [LeGO-LOAM](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM) algorithm to ROS2 humble.
+This code is a fork from [LeGO-LOAM-SR](https://github.com/eperdices/LeGO-LOAM-SR) to migrate [LeGO-LOAM](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM) algorithm to ROS2 galactic.
 
-This code only done minor change to migrate [LeGO-LOAM-SR](https://github.com/eperdices/LeGO-LOAM-SR) from ROS2 dashing to ROS2 humble, since there are some syntax difference in [rclcpp](https://docs.ros2.org/humble/api/rclcpp/index.html) between dashing and humble.
+This code only done minor change to migrate [LeGO-LOAM-SR](https://github.com/eperdices/LeGO-LOAM-SR) from ROS2 dashing to ROS2 galactic, since there are some syntax difference in [rclcpp](https://docs.ros2.org/galactic/api/rclcpp/index.html) between dashing and galactic.
 
 This code does not modify and/or improve the original [LeGO-LOAM](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM) algorithm.
 
@@ -37,7 +37,7 @@ The system takes in point cloud from a Velodyne VLP-16 Lidar (palced horizontal)
 
 - test in Ubuntu 20.04
 - [ROS1 Noetic](http://wiki.ros.org/noetic/Installation/Ubuntu)
-- [ROS2 humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html)
+- [ROS2 Galactic](https://docs.ros.org/en/galactic/Installation/Ubuntu-Install-Debians.html)
 - [gtsam](https://github.com/borglab/gtsam/releases) (Georgia Tech Smoothing and Mapping library, 4.0.0-alpha2)
   ```
   wget -O ~/Downloads/gtsam.zip https://github.com/borglab/gtsam/archive/4.0.0-alpha2.zip
@@ -47,7 +47,7 @@ The system takes in point cloud from a Velodyne VLP-16 Lidar (palced horizontal)
   cmake ..
   sudo make install
   ```
-- [colcon](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html)
+- [colcon](https://docs.ros.org/en/galactic/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html)
   ```
   sudo apt install python3-colcon-common-extensions
   ```
@@ -97,7 +97,7 @@ System can be started using the following command:
 
 ```
 echo source /opt/ros/noetic/setup.bash >> .bashrc
-echo source /opt/ros/humble/setup.bash >> .bashrc
+echo source /opt/ros/galactic/setup.bash >> .bashrc
 echo source ~/dev_ws/install/setup.bash >> .bashrc
 ```
 open another terminal
@@ -116,7 +116,7 @@ Play rosbag using rosbag_v2:
 
 ```
 source /opt/ros/noetic/setup.bash
-source /opt/ros/humble/setup.bash
+source /opt/ros/galactic/setup.bash
 ros2 bag play --topics /velodyne_points -s rosbag_v2 <path_to_bagfile>
 ```
 note:

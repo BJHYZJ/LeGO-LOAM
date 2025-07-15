@@ -36,11 +36,11 @@ def generate_launch_description():
     arguments=['0', '0', '0', '-1.570795', '-1.570795', '0', 'camera', 'base_link'],
   )
 
-  transform_velodyne = Node(
+  transform_hesai = Node(
     package='tf2_ros',
     executable='static_transform_publisher',
-    name='velodyne_to_base_link',
-    arguments=['0', '0', '0', '0', '0', '0','base_link','velodyne'],
+    name='hesai_to_base_link',
+    arguments=['0', '0', '0', '0', '0', '0','base_link','hesai_lidar'],
   )
 
   # LeGO-LOAM
@@ -49,7 +49,6 @@ def generate_launch_description():
     executable='lego_loam',
     output='screen',
     parameters=[config_file],
-    remappings=[('/lidar_points', '/velodyne_points')],
   )
 
   # Rviz
@@ -69,7 +68,7 @@ def generate_launch_description():
   ld.add_action(lego_loam_node)
   ld.add_action(transform_map)
   ld.add_action(transform_camera)
-  ld.add_action(transform_velodyne)
+  ld.add_action(transform_hesai)
   ld.add_action(rviz_node)
 
   return ld
