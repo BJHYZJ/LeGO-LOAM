@@ -117,7 +117,7 @@ Play rosbag using rosbag_v2:
 ```
 source /opt/ros/noetic/setup.bash
 source /opt/ros/galactic/setup.bash
-ros2 bag play --topics /velodyne_points -s rosbag_v2 <path_to_bagfile>
+ros2 bag play --topics /lidar_points -s rosbag_v2 <path_to_bagfile>
 ```
 note:
     topic of this package subscribed is remapped from '/lidar_points' to '/velodune_points', can be change in launch/run.launch.py line 45 if needed.
@@ -129,7 +129,7 @@ This dataset, [Stevens data-set](https://github.com/TixiaoShan/Stevens-VLP16-Dat
 The VLP-16 rotation rate is set to 10Hz. This data-set features over 20K scans and many loop-closures.
 The TF transform in the bags is provided by LeGO-LOAM (without enabling the loop-cloure function, pure lidar odometry). 
 
-To use this dataset to test LeGO-LOAM-ROS2, only topic /velodyne_points should be played. Topic /tf contain same structure of trasformation as LeGO-LOAM-ROS2, playing it will cause interference.
+To use this dataset to test LeGO-LOAM-ROS2, only topic /lidar_points should be played. Topic /tf contain same structure of trasformation as LeGO-LOAM-ROS2, playing it will cause interference.
 
 
 <p align='center'>

@@ -26,7 +26,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: raw velodyne data
+    SyncSource: raw hesai data
 Visualization Manager:
   Class: ""
   Displays:
@@ -66,7 +66,7 @@ Visualization Manager:
       Max Intensity: 100
       Min Color: 0; 0; 0
       Min Intensity: 1
-      Name: raw velodyne data
+      Name: raw hesai data
       Position Transformer: XYZ
       Selectable: false
       Size (Pixels): 2
@@ -78,7 +78,7 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /velodyne_points
+        Value: /lidar_points
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
